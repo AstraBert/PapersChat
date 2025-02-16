@@ -1,0 +1,6 @@
+*.xml
+.env
+papers-parser.code-workspace
+data/
+qdrant_storage/
+scripts/__pycache__/

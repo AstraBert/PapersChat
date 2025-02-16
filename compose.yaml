@@ -1,0 +1,38 @@
+name: papers_chat
+
+services:
+  app:
+    build: 
+      context: ./docker/
+      dockerfile: Dockerfile
+    ports:
+      - 7860:7860
+    secrets:
+      - mistral
+      - phoenix
+      - llamacloud
+    networks:
+      - internal_net
+  db:
+    image: qdrant/qdrant
+    ports:
+      - 6333:6333
+      - 6334:6334
+    volumes:
+      - "./qdrant_storage:/qdrant/storage"
+    networks:
+      - internal_net
+
+networks:
+  internal_net:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"
+
+secrets:
+  mistral:
+    environment: mistral_api_key
+  phoenix:
+    environment: phoenix_api_key
+  llamacloud:
+    environment: llamacloud_api_key
