@@ -7,7 +7,17 @@
     <a href="https://github.com/sponsors/AstraBert"><img src="https://img.shields.io/badge/sponsor-30363D?style=for-the-badge&logo=GitHub-Sponsors&logoColor=#EA4AAA" alt="GitHub Sponsors Badge"></a>
 </div>
 
+<div align="center">
+    <img src="logo.png" alt="PapersChat Logo" width=200 height=200>
+</div>
+
 **PapersChat** is an agentic AI application that allows you to chat with your papers and gather also information from papers on ArXiv and on PubMed. It is powered by [LlamaIndex](https://www.llamaindex.ai/), [Qdrant](https://qdrant.tech) and [Mistral AI](https://mistral.ai/en).
+
+### Flowchart
+
+<div align="center">
+    <img src="flowchart.png" alt="PapersChat Flowchart">
+</div>
 
 ### Install and launch it
 
