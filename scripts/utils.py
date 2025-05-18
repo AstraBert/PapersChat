@@ -38,3 +38,4 @@ def ingest_documents(files: List[str], collection_name: str, llamaparse: True):
     )
     return index
 
+load_dotenv()
