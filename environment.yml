@@ -180,7 +180,9 @@ dependencies:
       - jsonpath-python==1.0.6
       - llama-index-embeddings-fastembed==0.3.0
       - llama-index-embeddings-huggingface==0.5.1
+      - llama-index-llms-azure-openai==0.3.2
       - llama-index-llms-mistralai==0.3.2
+      - llama-index-llms-ollama==0.5.4
       - llama-index-tools-arxiv==0.3.0
       - llama-index-vector-stores-qdrant==0.4.3
       - loguru==0.7.3
@@ -211,6 +213,7 @@ dependencies:
       - nvidia-nvjitlink-cu12==12.4.127
       - nvidia-nvtx-cu12==12.4.127
       - olefile==0.47
+      - ollama==0.4.8
       - onnxruntime==1.20.1
       - openinference-instrumentation==0.1.22
       - openinference-instrumentation-llama-index==3.2.0

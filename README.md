@@ -72,6 +72,16 @@ mv .env.example .env
 # phoenix_api_key="56789def"
 ```
 
+- Alternatively, if you wish to use Azure OpenAI or Ollama, specify:
+
+```bash
+azure_openai_api_key="***" # if you wish to use Azure OpenAI
+ollama_model="gemma3:latest" # if you wish to use Ollama
+```
+
+>[!IMPORTANT]
+> _This is only possible while launching from source code, Docker launching does not support this option_
+
 - Set up PapersChat using the dedicated script:
 
 ```bash

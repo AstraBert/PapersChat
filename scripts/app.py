@@ -1,9 +1,12 @@
 from utils import ingest_documents, qdrant_client, List, QdrantVectorStore, VectorStoreIndex, embedder
+import sys
 import gradio as gr
 from toolsFunctions import pubmed_tool, arxiv_tool
 from llama_index.core.tools import QueryEngineTool, FunctionTool
 from llama_index.core import Settings
 from llama_index.llms.mistralai import MistralAI
+from llama_index.llms.azure_openai import AzureOpenAI
+from llama_index.llms.ollama import Ollama
 from llama_index.core.llms import ChatMessage
 from llama_index.core.agent import ReActAgent
 from dotenv import load_dotenv
@@ -24,7 +27,16 @@ tracer_provider = register(
 LlamaIndexInstrumentor().instrument(tracer_provider=tracer_provider)
 
 ## Globals
-Settings.llm = MistralAI(model="mistral-small-latest", temperature=0, api_key=os.getenv("mistral_api_key"))
+if os.getenv("mistral_api_key", None) is not None:
+    Settings.llm = MistralAI(model="mistral-small-latest", temperature=0, api_key=os.getenv("mistral_api_key"))
+elif os.getenv("azure_openai_api_key", None) is not None:
+    Settings.llm = AzureOpenAI(model="gpt-4.1", temperature=0, api_key=os.getenv("azure_openai_api_key"))
+elif os.getenv("ollama_model", None) is not None:
+    Settings.llm = Ollama(model=os.getenv("ollama_model"))
+else:
+    print("ERROR! No supported LLM can be loaded in PapersChat. Exiting...")
+    sys.exit(1)
+
 Settings.embed_model = embedder
 arxivtool = FunctionTool.from_defaults(arxiv_tool, name="arxiv_tool", description="A tool to search ArXiv (pre-print papers database) for specific papers")
 pubmedtool = FunctionTool.from_defaults(pubmed_tool, name="pubmed_tool", description="A tool to search PubMed (printed medical papers database) for specific papers")

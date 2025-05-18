@@ -4,3 +4,4 @@ papers-parser.code-workspace
 data/
 qdrant_storage/
 scripts/__pycache__/
+huggingface_spaces/
